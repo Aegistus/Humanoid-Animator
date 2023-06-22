@@ -443,6 +443,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4887411677664137172}
     m_Modifications:
+    - target: {fileID: 857782716, guid: 22898a7156cf0b44c87ff9d0379ae581, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 857782716, guid: 22898a7156cf0b44c87ff9d0379ae581, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 559309118090986842, guid: 22898a7156cf0b44c87ff9d0379ae581, type: 3}
+      propertyPath: m_Data.m_ConstrainedAxes.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3307027221300330830, guid: 22898a7156cf0b44c87ff9d0379ae581, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -490,6 +502,10 @@ PrefabInstance:
     - target: {fileID: 3309876125481005912, guid: 22898a7156cf0b44c87ff9d0379ae581, type: 3}
       propertyPath: m_Name
       value: Human
+      objectReference: {fileID: 0}
+    - target: {fileID: 7871329571026046081, guid: 22898a7156cf0b44c87ff9d0379ae581, type: 3}
+      propertyPath: animationDictionary.Array.size
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22898a7156cf0b44c87ff9d0379ae581, type: 3}
