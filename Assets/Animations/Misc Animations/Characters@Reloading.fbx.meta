@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 20979d68d4c2f794099db0bbd59a9b68
+guid: 30a142bf12c05274c9b56f2e037b2c66
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -19,7 +19,11 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: 
+    animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
+      might lower retargeting quality:\nNote: Activate translation DOF on avatar
+      to improve retargeting quality.\n\t'Clavicle_L' has translation animation that
+      will be discarded.\n\t'Clavicle_R' has translation animation that will be discarded.\n\t'UpperLeg_R'
+      has translation animation that will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -33,11 +37,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: right strafe
+      name: reloading
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 20
+      lastFrame: 110
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
