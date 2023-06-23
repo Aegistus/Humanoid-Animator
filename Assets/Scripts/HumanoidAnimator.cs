@@ -106,6 +106,12 @@ public class HumanoidAnimator : MonoBehaviour
         anim.CrossFade(hash, crossFadeTime, upperBodyLayerIndex);
     }
 
+    /// <summary>
+    /// Sets a target for either the left or right hand to reach for. 
+    /// </summary>
+    /// <param name="hand">Which hand to set the target for.</param>
+    /// <param name="target">The target object to reach for.</param>
+    /// <param name="grabSpeed">The speed at which the hand will initially move to the object.</param>
     public void SetHandTarget(Hand hand, Transform target, float grabSpeed)
     {
         if (hand == Hand.Right)
@@ -121,6 +127,7 @@ public class HumanoidAnimator : MonoBehaviour
         StartCoroutine(IncreaseIKWeight(hand, grabSpeed));
     }
 
+    // increases hand IK weight gradually to make arm movements less sudden.
     IEnumerator IncreaseIKWeight(Hand hand, float grabSpeed)
     {
         if (hand == Hand.Right)
