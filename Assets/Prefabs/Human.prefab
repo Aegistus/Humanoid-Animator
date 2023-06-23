@@ -1433,6 +1433,9 @@ MonoBehaviour:
   - state: 1
     animatorStateName: Idle
     animHash: 0
+  - state: 6
+    animatorStateName: Punch
+    animHash: 0
   upperBodyAnimationStates:
   - state: 6
     animatorStateName: Punch

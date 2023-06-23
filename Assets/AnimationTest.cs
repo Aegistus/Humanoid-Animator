@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AnimationTest : MonoBehaviour
 {
+    [SerializeField] Transform targetObject;
+
     HumanoidAnimator humanoidAnimator;
 
     private void Awake()
@@ -27,5 +29,12 @@ public class AnimationTest : MonoBehaviour
         {
             humanoidAnimator.PlayUpperBodyAnimation(AnimationState.Punch);
         }
+
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            humanoidAnimator.SetHandTarget(Hand.Right, targetObject, .5f);
+        }
     }
+
+    
 }

@@ -3,18 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+public enum Hand
+{
+    Right, Left
+}
+
 public class HumanoidAnimator : MonoBehaviour
 {
     [SerializeField] Transform aimTarget;
+    [SerializeField] Transform rightHand;
+    [SerializeField] Transform leftHand;
     [SerializeField] string fullBodyAnimationLayer = "Full Body";
     [SerializeField] string upperBodyAnimationLayer = "Upper Body";
     [SerializeField] float crossFadeTime = .2f;
     [SerializeField] AnimationEntry[] animationStates;
     [SerializeField] AnimationEntry[] upperBodyAnimationStates;
 
+    Transform RightHandTarget { get; set; }
+    Transform LeftHandTarget { get; set; }
+
     Animator anim;
     int fullBodyLayerIndex;
     int upperBodyLayerIndex;
+    float rightHandIKWeight = 0f;
+    float leftHandIKWeight = 0f;
 
     [System.Serializable]
     class AnimationEntry
@@ -38,6 +50,24 @@ public class HumanoidAnimator : MonoBehaviour
         for (int i = 0; i < upperBodyAnimationStates.Length; i++)
         {
             upperBodyAnimationStates[i].animHash = Animator.StringToHash(upperBodyAnimationStates[i].animatorStateName);
+        }
+    }
+
+    private void OnAnimatorIK()
+    {
+        if (RightHandTarget)
+        {
+            anim.SetIKPositionWeight(AvatarIKGoal.RightHand, rightHandIKWeight);
+            anim.SetIKRotationWeight(AvatarIKGoal.RightHand, rightHandIKWeight);
+            anim.SetIKPosition(AvatarIKGoal.RightHand, RightHandTarget.position);
+            anim.SetIKRotation(AvatarIKGoal.RightHand, RightHandTarget.rotation);
+        }
+        if (LeftHandTarget)
+        {
+            anim.SetIKPositionWeight(AvatarIKGoal.LeftHand, leftHandIKWeight);
+            anim.SetIKRotationWeight(AvatarIKGoal.LeftHand, leftHandIKWeight);
+            anim.SetIKPosition(AvatarIKGoal.LeftHand, LeftHandTarget.position);
+            anim.SetIKRotation(AvatarIKGoal.LeftHand, LeftHandTarget.rotation);
         }
     }
 
@@ -76,4 +106,38 @@ public class HumanoidAnimator : MonoBehaviour
         anim.CrossFade(hash, crossFadeTime, upperBodyLayerIndex);
     }
 
+    public void SetHandTarget(Hand hand, Transform target, float grabSpeed)
+    {
+        if (hand == Hand.Right)
+        {
+            RightHandTarget = target;
+            rightHandIKWeight = 0f;
+        }
+        else
+        {
+            LeftHandTarget = target;
+            leftHandIKWeight = 0f;
+        }
+        StartCoroutine(IncreaseIKWeight(hand, grabSpeed));
+    }
+
+    IEnumerator IncreaseIKWeight(Hand hand, float grabSpeed)
+    {
+        if (hand == Hand.Right)
+        {
+            while (rightHandIKWeight < 1)
+            {
+                rightHandIKWeight += grabSpeed * Time.deltaTime;
+                yield return null;
+            }
+        }
+        else
+        {
+            while (leftHandIKWeight < 1)
+            {
+                leftHandIKWeight += grabSpeed * Time.deltaTime;
+                yield return null;
+            }
+        }
+    }
 }
