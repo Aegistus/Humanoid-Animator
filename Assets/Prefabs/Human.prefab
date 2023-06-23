@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 857782715}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.69, z: 1.59}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1423,8 +1423,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aimTarget: {fileID: 857782716}
-  animationDictionary: []
-  upperBodyAnimationDictionary: []
+  fullBodyAnimationLayer: Full Body
+  upperBodyAnimationLayer: Upper Body
+  crossFadeTime: 0.2
+  animationStates:
+  - state: 2
+    animatorStateName: WalkForwards
+    animHash: 0
+  - state: 1
+    animatorStateName: Idle
+    animHash: 0
+  upperBodyAnimationStates: []
 --- !u!95 &3222525958760359918
 Animator:
   serializedVersion: 5
@@ -1438,7 +1447,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 87dc60035db6a12479be5cd416b5c7d2, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -2318,5 +2327,5 @@ MonoBehaviour:
     m_MaintainOffset: 0
     m_ConstrainedAxes:
       x: 0
-      y: 0
+      y: 1
       z: 1

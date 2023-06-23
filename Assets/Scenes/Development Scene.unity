@@ -443,18 +443,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4887411677664137172}
     m_Modifications:
-    - target: {fileID: 857782716, guid: 22898a7156cf0b44c87ff9d0379ae581, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.69
-      objectReference: {fileID: 0}
-    - target: {fileID: 857782716, guid: 22898a7156cf0b44c87ff9d0379ae581, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1.59
-      objectReference: {fileID: 0}
-    - target: {fileID: 559309118090986842, guid: 22898a7156cf0b44c87ff9d0379ae581, type: 3}
-      propertyPath: m_Data.m_ConstrainedAxes.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3307027221300330830, guid: 22898a7156cf0b44c87ff9d0379ae581, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -504,8 +492,8 @@ PrefabInstance:
       value: Human
       objectReference: {fileID: 0}
     - target: {fileID: 7871329571026046081, guid: 22898a7156cf0b44c87ff9d0379ae581, type: 3}
-      propertyPath: animationDictionary.Array.size
-      value: 1
+      propertyPath: crossFadeTime
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22898a7156cf0b44c87ff9d0379ae581, type: 3}
@@ -534,6 +522,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4887411677664137172}
+  - component: {fileID: 4887411677664137174}
   m_Layer: 0
   m_Name: Test Controller
   m_TagString: Untagged
@@ -541,3 +530,15 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &4887411677664137174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4887411677664137173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 959aeb9497fd74545b5fb75fff87e4da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
