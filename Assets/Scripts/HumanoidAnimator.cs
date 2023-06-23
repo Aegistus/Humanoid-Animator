@@ -73,6 +73,7 @@ public class HumanoidAnimator : MonoBehaviour
     {
         int hash = Array.Find(upperBodyAnimationStates, anim => anim.state == upperBodyAnimation).animHash;
         anim.SetLayerWeight(upperBodyLayerIndex, 1);
-        anim.CrossFade(hash, crossFadeTime);
+        anim.CrossFade(hash, crossFadeTime, upperBodyLayerIndex);
     }
+
 }

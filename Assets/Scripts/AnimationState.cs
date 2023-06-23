@@ -7,5 +7,5 @@ using UnityEngine;
 /// </summary>
 public enum AnimationState
 {
-    None, Idle, WalkForwards, WalkLeft, WalkRight, WalkBackwards
+    None, Idle, WalkForwards, WalkLeft, WalkRight, WalkBackwards, Punch
 }

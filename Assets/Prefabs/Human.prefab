@@ -1425,7 +1425,7 @@ MonoBehaviour:
   aimTarget: {fileID: 857782716}
   fullBodyAnimationLayer: Full Body
   upperBodyAnimationLayer: Upper Body
-  crossFadeTime: 0.2
+  crossFadeTime: 0.1
   animationStates:
   - state: 2
     animatorStateName: WalkForwards
@@ -1433,7 +1433,10 @@ MonoBehaviour:
   - state: 1
     animatorStateName: Idle
     animHash: 0
-  upperBodyAnimationStates: []
+  upperBodyAnimationStates:
+  - state: 6
+    animatorStateName: Punch
+    animHash: 0
 --- !u!95 &3222525958760359918
 Animator:
   serializedVersion: 5

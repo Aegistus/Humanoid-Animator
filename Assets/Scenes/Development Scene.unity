@@ -491,10 +491,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Human
       objectReference: {fileID: 0}
-    - target: {fileID: 7871329571026046081, guid: 22898a7156cf0b44c87ff9d0379ae581, type: 3}
-      propertyPath: crossFadeTime
-      value: 0.1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22898a7156cf0b44c87ff9d0379ae581, type: 3}
 --- !u!4 &4887411677664137172
