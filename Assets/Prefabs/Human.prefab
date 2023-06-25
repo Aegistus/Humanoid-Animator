@@ -1382,6 +1382,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3307027221300330830}
   - component: {fileID: 7871329571026046081}
+  - component: {fileID: 6502935279147274507}
   - component: {fileID: 3222525958760359918}
   - component: {fileID: 6441952339712974193}
   m_Layer: 0
@@ -1423,6 +1424,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aimTarget: {fileID: 857782716}
+  rightHand: {fileID: 0}
+  leftHand: {fileID: 0}
   fullBodyAnimationLayer: Full Body
   upperBodyAnimationLayer: Upper Body
   crossFadeTime: 0.1
@@ -1440,6 +1443,18 @@ MonoBehaviour:
   - state: 6
     animatorStateName: Punch
     animHash: 0
+--- !u!114 &6502935279147274507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3309876125481005912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 816d33a890966c34291c32910e39995d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!95 &3222525958760359918
 Animator:
   serializedVersion: 5

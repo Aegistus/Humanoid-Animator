@@ -7,10 +7,12 @@ public class AnimationTest : MonoBehaviour
     [SerializeField] Transform targetObject;
 
     HumanoidAnimator humanoidAnimator;
+    HumanoidIK ik;
 
     private void Awake()
     {
         humanoidAnimator = GetComponentInChildren<HumanoidAnimator>();
+        ik = GetComponentInChildren<HumanoidIK>();
     }
 
     private void Update()
@@ -32,7 +34,11 @@ public class AnimationTest : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.G))
         {
-            humanoidAnimator.SetHandTarget(Hand.Right, targetObject, .5f);
+            ik.SetHandTarget(Hand.Right, targetObject, 1f);
+        }
+        if (Input.GetKeyUp(KeyCode.G))
+        {
+            ik.ResetHandIKTarget(Hand.Right, 1f);
         }
     }
 
