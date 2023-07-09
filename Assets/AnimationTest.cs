@@ -13,23 +13,26 @@ public class AnimationTest : MonoBehaviour
     {
         humanoidAnimator = GetComponentInChildren<HumanoidAnimator>();
         ik = GetComponentInChildren<HumanoidIK>();
+        print(FullBodyAnimState.Idle.ToString());
+        print(FullBodyAnimState.WalkForwards.ToString());
     }
 
     private void Update()
     {
+
         if (Input.GetKeyDown(KeyCode.W))
         {
-            humanoidAnimator.PlayAnimation(AnimationState.WalkForwards, false);
+            humanoidAnimator.PlayFullBodyAnimation(FullBodyAnimState.WalkForwards, false);
         }
 
         if (Input.GetKeyUp(KeyCode.W))
         {
-            humanoidAnimator.PlayAnimation(AnimationState.Idle, false);
+            humanoidAnimator.PlayFullBodyAnimation(FullBodyAnimState.Idle, false);
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            humanoidAnimator.PlayUpperBodyAnimation(AnimationState.Punch);
+            humanoidAnimator.PlayUpperBodyAnimation(UpperBodyAnimState.Punch);
         }
 
         if (Input.GetKeyDown(KeyCode.G))

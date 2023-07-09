@@ -10,41 +10,31 @@ public enum Hand
 
 public class HumanoidAnimator : MonoBehaviour
 {
+    [SerializeField] RuntimeAnimatorController controller;
     [SerializeField] Transform aimTarget;
-    [SerializeField] Transform rightHand;
-    [SerializeField] Transform leftHand;
     [SerializeField] string fullBodyAnimationLayer = "Full Body";
     [SerializeField] string upperBodyAnimationLayer = "Upper Body";
     [SerializeField] float crossFadeTime = .2f;
-    [SerializeField] AnimationEntry[] animationStates;
-    [SerializeField] AnimationEntry[] upperBodyAnimationStates;
 
     Animator anim;
-    int fullBodyLayerIndex;
     int upperBodyLayerIndex;
-
-    [System.Serializable]
-    class AnimationEntry
-    {
-        public AnimationState state;
-        [Tooltip("The name of the state in the animator controller.")]
-        public string animatorStateName;
-        [HideInInspector]
-        public int animHash;
-    }
+    int[] fullBodyHashes;
+    int[] upperBodyHashes;
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
-        fullBodyLayerIndex = anim.GetLayerIndex(fullBodyAnimationLayer);
         upperBodyLayerIndex = anim.GetLayerIndex(upperBodyAnimationLayer);
-        for (int i = 0; i < animationStates.Length; i++)
+        fullBodyHashes = new int[Enum.GetValues(typeof(FullBodyAnimState)).Length];
+        for (int i = 0; i < fullBodyHashes.Length; i++)
         {
-            animationStates[i].animHash = Animator.StringToHash(animationStates[i].animatorStateName);
+            fullBodyHashes[i] = Animator.StringToHash(((FullBodyAnimState)i).ToString());
         }
-        for (int i = 0; i < upperBodyAnimationStates.Length; i++)
+
+        upperBodyHashes = new int[Enum.GetValues(typeof(UpperBodyAnimState)).Length];
+        for (int i = 0; i < upperBodyHashes.Length; i++)
         {
-            upperBodyAnimationStates[i].animHash = Animator.StringToHash(upperBodyAnimationStates[i].animatorStateName);
+            upperBodyHashes[i] = Animator.StringToHash(((UpperBodyAnimState)i).ToString());
         }
     }
 
@@ -60,15 +50,15 @@ public class HumanoidAnimator : MonoBehaviour
     /// <summary>
     /// Play a humanoid animation that is defined in the animationStates array.
     /// </summary>
-    /// <param name="animationState">The state to play.</param>
+    /// <param name="fullBodyAnimation">The state to play.</param>
     /// <param name="overwriteUpperBody">Whether this animation should overwrite the upper body animation as well.</param>
-    public void PlayAnimation(AnimationState animationState, bool overwriteUpperBody = true)
+    public void PlayFullBodyAnimation(FullBodyAnimState fullBodyAnimation, bool overwriteUpperBody = true)
     {
         if (overwriteUpperBody)
         {
             anim.SetLayerWeight(upperBodyLayerIndex, 0);
         }
-        int hash = Array.Find(animationStates, anim => anim.state == animationState).animHash;
+        int hash = fullBodyHashes[(int)fullBodyAnimation];
         anim.CrossFade(hash, crossFadeTime);
     }
 
@@ -76,9 +66,9 @@ public class HumanoidAnimator : MonoBehaviour
     /// Play an upper body animation that is defined in the upperBodyAnimationStates array.
     /// </summary>
     /// <param name="upperBodyAnimation">The upper body state to play.</param>
-    public void PlayUpperBodyAnimation(AnimationState upperBodyAnimation)
+    public void PlayUpperBodyAnimation(UpperBodyAnimState upperBodyAnimation)
     {
-        int hash = Array.Find(upperBodyAnimationStates, anim => anim.state == upperBodyAnimation).animHash;
+        int hash = upperBodyHashes[(int)upperBodyAnimation];
         anim.SetLayerWeight(upperBodyLayerIndex, 1);
         anim.CrossFade(hash, crossFadeTime, upperBodyLayerIndex);
     }

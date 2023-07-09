@@ -5,7 +5,12 @@ using UnityEngine;
 /// <summary>
 /// Add more animator states here as needed.
 /// </summary>
-public enum AnimationState
+public enum FullBodyAnimState
 {
-    None, Idle, WalkForwards, WalkLeft, WalkRight, WalkBackwards, Punch
+    Idle, WalkForwards, WalkLeft, WalkRight, WalkBackwards
+}
+
+public enum UpperBodyAnimState
+{
+    None, Punch
 }
