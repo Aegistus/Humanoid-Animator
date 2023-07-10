@@ -41,7 +41,7 @@ public class HumanoidIK : MonoBehaviour
     /// <param name="hand">Which hand to set the target for.</param>
     /// <param name="target">The target object to reach for.</param>
     /// <param name="grabSpeed">The speed at which the hand will initially move to the object.</param>
-    public void SetHandTarget(Hand hand, Transform target, float grabSpeed)
+    public void SetHandTarget(Hand hand, Transform target, float grabSpeed = 1f)
     {
         if (hand == Hand.Right)
         {
@@ -116,6 +116,21 @@ public class HumanoidIK : MonoBehaviour
                 yield return null;
             }
             LeftHandTarget = null;
+        }
+    }
+
+    public void HoldItem(Transform item, Transform rightHandHold, Transform leftHandHold, Vector3 offset)
+    {
+        item.parent = transform;
+        //item.position = transform.position;
+        item.localPosition = offset;
+        if (rightHandHold)
+        {
+            SetHandTarget(Hand.Right, rightHandHold);
+        }
+        if (leftHandHold)
+        {
+            SetHandTarget(Hand.Left, leftHandHold);
         }
     }
 }

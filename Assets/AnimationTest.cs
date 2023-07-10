@@ -5,6 +5,7 @@ using UnityEngine;
 public class AnimationTest : MonoBehaviour
 {
     [SerializeField] Transform targetObject;
+    [SerializeField] Holdable gun;
 
     HumanoidAnimator humanoidAnimator;
     HumanoidIK ik;
@@ -42,6 +43,10 @@ public class AnimationTest : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.G))
         {
             ik.ResetHandIKTarget(Hand.Right, 1f);
+        }
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            ik.HoldItem(gun.transform, gun.RightHandPosition, gun.LeftHandPosition, gun.Offset);
         }
     }
 
